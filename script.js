@@ -68,11 +68,6 @@ for (const operator of operators) {
     previousField.innerText = currentFieldNumber;
   });
 }
-for (const operator of operators) {
-  operator.addEventListener("click", function () {
-    operator.setAttribute("disabled", true);
-  });
-}
 //dot
 const dot = document.getElementById("dot");
 dot.addEventListener("click", function () {
