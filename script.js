@@ -4,11 +4,15 @@ const numberValues = numbers.innerText;
 const currentField = document.getElementById("current-operands");
 currentField.innerText = "";
 const previousField = document.getElementById("previous-operands");
+currentField.innerText = 0;
 for (const number of numbers) {
   number.addEventListener("click", function () {
-    const currentFieldText = currentField.innerText;
-    currentField.innerText = currentFieldText + number.innerText;
-    currentField.innerText = Number(currentField.innerText);
+    if (currentField.innerText == 0) {
+      currentField.innerText = number.innerText;
+    } else {
+      const currentFieldText = currentField.innerText;
+      currentField.innerText = currentFieldText + number.innerText;
+    }
   });
 }
 let operation;
@@ -64,7 +68,11 @@ for (const operator of operators) {
     previousField.innerText = currentFieldNumber;
   });
 }
-
+for (const operator of operators) {
+  operator.addEventListener("click", function () {
+    operator.setAttribute("disabled", true);
+  });
+}
 //dot
 const dot = document.getElementById("dot");
 dot.addEventListener("click", function () {
